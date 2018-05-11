@@ -9,72 +9,57 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v4.app.FragmentActivity;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.os.AsyncTask;
+import android.support.design.widget.Snackbar;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 
 public class Tab1Fragment extends Fragment{
     private static final String TAG = "Tab1Fragment";
 
-    private SectionsPageAdapter mSectionsPageAdapter;
-    private Button btn1;
-    private  Button btntest;
 
-    private TextView tv2;
-
-    private ViewPager mViewPager;
+    String url="http://10.0.1.117:8083/daily/players.php";
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.tab1_fragment,container,false);
 
-        btn1 = (Button) view.findViewById(R.id.btn1);
-        btntest = (Button) view.findViewById(R.id.btntest);
-        tv2=(TextView) view.findViewById(R.id.tv2);
-
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "TESTING BUTTON CLICK 1",Toast.LENGTH_SHORT).show();
-
-
-            }
-        });
-
-        tv2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                tv2.setText("YYYY");
-            }
-        });
 
 
 
-        btntest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(), "test11111", Toast.LENGTH_SHORT).show();
-                //getFragmentManager().beginTransaction().hide(Tab1Fragment.this).commitAllowingStateLoss();
-                //getFragmentManager().beginTransaction().add(R.id.main_content, new Tab3Fragment()).commitAllowingStateLoss();
 
-
-
-                ((MainActivity)getActivity()).setViewPager(2);
-
-            }
-        });
-
+        final ListView lv= (ListView) view.findViewById(R.id.lv);
+        final Downloader d=new Downloader(this.getActivity(),url,lv);
+        d.execute();
 
 
         return  view;
 
     }
+
+
 
 
 

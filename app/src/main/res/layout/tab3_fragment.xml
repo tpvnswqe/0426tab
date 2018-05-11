@@ -7,43 +7,10 @@
     android:layout_height="match_parent">
 
 
-    <Button
-        android:id="@+id/btn3"
+    <WebView
+        android:id="@+id/web_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="171dp"
-        android:layout_marginLeft="26dp"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="27dp"
-        android:text="Button 3"
-        app:layout_constraintBottom_toTopOf="@+id/tv2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="449dp"
-        android:layout_marginEnd="152dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginRight="152dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="44dp"
-        android:text="Tab3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn1"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="41dp"
-        android:layout_marginStart="41dp"
-        android:text="aaa"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp" />
 </android.support.constraint.ConstraintLayout>

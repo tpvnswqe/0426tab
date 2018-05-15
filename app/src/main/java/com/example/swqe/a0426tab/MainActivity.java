@@ -1,4 +1,5 @@
 package com.example.swqe.a0426tab;
+import android.content.SharedPreferences;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +12,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.app.Application;
 
 
 
@@ -25,12 +26,15 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager mViewPager;
     private Button btntest;
 
+    private Parser anotherClass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        SharedPreferences sharedPreferences = getSharedPreferences("User" , MODE_PRIVATE);
+        sharedPreferences.edit().putString("Name", "Devin").apply();
+        sharedPreferences.edit().putInt("Age", 19).apply();
 
         setContentView(R.layout.activity_main);
 
@@ -49,12 +53,21 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        setViewPager(1);
+
+
+
+        //實例化一個Bundle物件
+        Bundle aa = new Bundle();
+        //儲存資料　第一個為參數key，第二個為Value
+        aa.putString("key","Value");
+        aa.putString("name","learnexp");
 
 
 
     }
 
-    private void setupViewPager(ViewPager viewPager) {
+    public void setupViewPager(ViewPager viewPager) {
         SectionsPageAdapter adapter = new SectionsPageAdapter(getSupportFragmentManager());
         adapter.addFragment(new Tab1Fragment(), "SSS");
         adapter.addFragment(new Tab2Fragment(), "TAB2");
@@ -62,9 +75,18 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
+
+
     public void setViewPager(int fragmentNumber){
         mViewPager.setCurrentItem(fragmentNumber);
 
+    }
+    public void setViewPager2(){
+        mViewPager.setCurrentItem(2);
 
     }
+
+
 }
+
+

@@ -16,6 +16,8 @@ import android.widget.Toast;
 import android.webkit.WebView;
 import android.webkit.WebViewFragment;
 
+//import static com.example.swqe.a0426tab.Parser.aa;
+
 public class Tab3Fragment  extends Fragment  {
     private static final String TAG = "Tab3Fragment";
 
@@ -36,8 +38,11 @@ public class Tab3Fragment  extends Fragment  {
         setting.setJavaScriptEnabled(true);
 
 
+
         web_1.setWebViewClient(new WebViewClient());
-        web_1.loadUrl("http://10.0.1.117:8083/daily/inde.php");
+        web_1.loadUrl("http://10.0.1.117:8083/daily/inde.php?project_id="+Parser.aa);
+
+
 
         return v;
 

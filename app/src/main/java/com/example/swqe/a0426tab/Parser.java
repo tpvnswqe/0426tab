@@ -2,8 +2,13 @@ package com.example.swqe.a0426tab;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,17 +20,26 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import android.app.Application;
+
+import static android.content.Context.MODE_PRIVATE;
+
 
 /**
  * Created by Prasanga Fernando on 12/3/2017.
  */
 
+
 public class Parser extends AsyncTask<Void,Integer,Integer> {
     Context c;
     ListView lv;
     String data;
+    public static String aa;
+    private MainActivity mainActivity;
+
     ArrayList<String> players=new ArrayList<>();
     ProgressDialog pd;
+
     public Parser(Context c, String data, ListView lv) {
         this.c = c;
         this.data = data;
@@ -42,10 +56,11 @@ public class Parser extends AsyncTask<Void,Integer,Integer> {
     @Override
     protected Integer doInBackground(Void... params) {
         return this.parse();
+
     }
 
     @Override
-    protected void onPostExecute(Integer integer) {
+    protected void onPostExecute (Integer integer) {
         super.onPostExecute(integer);
         if(integer == 1)
         {
@@ -60,6 +75,7 @@ public class Parser extends AsyncTask<Void,Integer,Integer> {
                     //Snackbar.make(view,players.get(position),Snackbar.LENGTH_LONG).show();
 
 
+
                     try {
                         //ADD THAT DATA TO JSON ARRAY FIRST
                         JSONArray ja = new JSONArray(data);
@@ -68,18 +84,21 @@ public class Parser extends AsyncTask<Void,Integer,Integer> {
                         jo=ja.getJSONObject(position);
                         String name=jo.getString("project_id");
 
+                        aa = name;
+
+
+                        //(MainActivity.this).setViewPager(2);
+
+
+                        //((MainActivity) getActivity()).setViewPager(2);
+
                         Snackbar.make(view,name, Snackbar.LENGTH_LONG).show();
-
-
-                        
 
 
 
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
-
                 }
             });
         }else
@@ -115,4 +134,8 @@ public class Parser extends AsyncTask<Void,Integer,Integer> {
         }
         return 0;
     }
+
+
+
 }
+

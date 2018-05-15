@@ -74,7 +74,6 @@ public class Tab2Fragment extends Fragment {
                 //getFragmentManager().beginTransaction().add(R.id.main_content, new Tab3Fragment()).commitAllowingStateLoss();
 
 
-
                 ((MainActivity)getActivity()).setViewPager(2);
 
             }

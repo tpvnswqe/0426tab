@@ -18,12 +18,12 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="38dp"
             android:layout_weight="1"
             android:background="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:title="0426">
+            app:title="Report">
 
         </android.support.v7.widget.Toolbar>
 

@@ -53,15 +53,15 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        setViewPager(1);
+        //setViewPager(1);
 
 
 
         //實例化一個Bundle物件
-        Bundle aa = new Bundle();
+        Bundle bb = new Bundle();
         //儲存資料　第一個為參數key，第二個為Value
-        aa.putString("key","Value");
-        aa.putString("name","learnexp");
+        bb.putString("key","Value");
+        bb.putString("name","learnexp");
 
 
 
@@ -69,9 +69,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void setupViewPager(ViewPager viewPager) {
         SectionsPageAdapter adapter = new SectionsPageAdapter(getSupportFragmentManager());
-        adapter.addFragment(new Tab1Fragment(), "SSS");
-        adapter.addFragment(new Tab2Fragment(), "TAB2");
-        adapter.addFragment(new Tab3Fragment(), "TAB3");
+        adapter.addFragment(new Tab1Fragment(), "Project List");
+        adapter.addFragment(new Tab2Fragment(), "Project Detail");
+        adapter.addFragment(new Tab3Fragment(), "Chart");
+        //adapter.addFragment(new Tab3Fragment(), "Chart");
         viewPager.setAdapter(adapter);
     }
 

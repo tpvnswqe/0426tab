@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,14 +34,20 @@ public class Tab3Fragment  extends Fragment  {
 
         View v=inflater.inflate(R.layout.tab3_fragment, container, false);
 
+        Log.d(TAG, "Parser aa: "+Parser.aa);
         WebView web_1 = v.findViewById(R.id.web_1);
         WebSettings setting = web_1.getSettings();
         setting.setJavaScriptEnabled(true);
 
 
 
+
         web_1.setWebViewClient(new WebViewClient());
-        web_1.loadUrl("http://10.0.1.117:8083/daily/inde.php?project_id="+Parser.aa);
+
+        web_1.getSettings().setUseWideViewPort(true);
+        web_1.getSettings().setLoadWithOverviewMode(true);
+
+        web_1.loadUrl("http://192.168.1.23:8083/daily/inde.php?project_id="+Parser.aa);
 
 
 

@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -35,7 +36,11 @@ public class Parser extends AsyncTask<Void,Integer,Integer> {
     ListView lv;
     String data;
     public static String aa;
+    public static int select_item=-1; //一開始未選擇任何一個item所以為-1
     private MainActivity mainActivity;
+    public static final int CHOICE_MODE_SINGLE = 1;
+
+    private static final String TAG = "TT" ;
 
     ArrayList<String> players=new ArrayList<>();
     ProgressDialog pd;
@@ -59,22 +64,48 @@ public class Parser extends AsyncTask<Void,Integer,Integer> {
 
     }
 
+
     @Override
     protected void onPostExecute (Integer integer) {
         super.onPostExecute(integer);
         if(integer == 1)
         {
             //ADAPTER
-            ArrayAdapter<String> adapter=new ArrayAdapter<String>(c,android.R.layout.simple_list_item_1,players);
+            ArrayAdapter<String> adapter=new ArrayAdapter<String>(c,android.R.layout.simple_list_item_single_choice,players);
             //ADAPT TO LISTVIEW
+
+            lv.setChoiceMode(CHOICE_MODE_SINGLE );
             lv.setAdapter(adapter);
+            lv.setItemChecked(select_item,true);
+
+
+
             //LISTENET
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                View view2; //保存點選的View
+                //int select_item=-1; //一開始未選擇任何一個item所以為-1
+
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     //Snackbar.make(view,players.get(position),Snackbar.LENGTH_LONG).show();
 
 
+
+                    Log.d(TAG, "onItemClick: "+lv.getCheckedItemPosition());
+                    //======================
+                    //點選某個item並呈現被選取的狀態
+                    if ((select_item == -1) || (select_item==position)){
+                        //Log.d(TAG, "onItemClick: "+select_item);
+                        Log.d(TAG, "position:  "+ position);
+//                        view.setBackgroundColor(Color.YELLOW); //為View加上選取效果
+                    }else{
+//                        view2.setBackgroundDrawable(null); //將上一次點選的View保存在view2
+//                        view.setBackgroundColor(Color.YELLOW); //為View加上選取效果
+                    }
+                    view2=view; //保存點選的View
+                    select_item=position;//保存目前的View位置
+                    //======================
 
                     try {
                         //ADD THAT DATA TO JSON ARRAY FIRST

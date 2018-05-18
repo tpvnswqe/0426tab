@@ -1,5 +1,6 @@
 package com.example.swqe.a0426tab;
 
+import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +9,7 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
@@ -35,8 +37,14 @@ public class Parser extends AsyncTask<Void,Integer,Integer> {
     Context c;
     ListView lv;
     String data;
-    public static String aa;
+    public static String aa ="";
+    public static String projectdata = "";
+    public static String projectregion = "";
+    public static String projectleader = "";
+    public static String projectscore = "";
+    public static String projectchip = "";
     public static int select_item=-1; //一開始未選擇任何一個item所以為-1
+
     private MainActivity mainActivity;
     public static final int CHOICE_MODE_SINGLE = 1;
 
@@ -116,6 +124,11 @@ public class Parser extends AsyncTask<Void,Integer,Integer> {
                         String name=jo.getString("project_id");
 
                         aa = name;
+                        projectdata= jo.getString("project_name");
+                        projectregion= jo.getString("region");
+                        projectleader= jo.getString("project_leader");
+                        projectscore= jo.getString("sw_score");
+                        projectchip= jo.getString("chipset");
 
 
                         //(MainActivity.this).setViewPager(2);

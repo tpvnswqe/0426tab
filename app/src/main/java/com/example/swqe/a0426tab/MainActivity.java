@@ -1,4 +1,5 @@
 package com.example.swqe.a0426tab;
+import android.app.FragmentManager;
 import android.content.SharedPreferences;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -42,20 +43,19 @@ public class MainActivity extends AppCompatActivity {
 
         mSectionsPageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
 
+
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
+        //mViewPager.setOffscreenPageLimit(0);
         setupViewPager(mViewPager);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         //setViewPager(1);
-
-
 
         //實例化一個Bundle物件
         Bundle bb = new Bundle();
@@ -67,13 +67,27 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+
+
+
+
     public void setupViewPager(ViewPager viewPager) {
         SectionsPageAdapter adapter = new SectionsPageAdapter(getSupportFragmentManager());
+
         adapter.addFragment(new Tab1Fragment(), "Project List");
         adapter.addFragment(new Tab2Fragment(), "Project Detail");
         adapter.addFragment(new Tab3Fragment(), "Chart");
+
         //adapter.addFragment(new Tab3Fragment(), "Chart");
+        //adapter.addFragment(new Tab3Fragment(), "Chart");
+        Log.d(TAG, "setupViewPager");
+        //viewPager.setOffscreenPageLimit(2);
         viewPager.setAdapter(adapter);
+
+
+
+
     }
 
 

@@ -88,7 +88,7 @@ public class Tab2Fragment extends Fragment {
 
         final ListView lv2 = (ListView) view.findViewById(R.id.lv2);
         //ListView 要顯示的內容
-        String[] str = {"Project Name","Region","SWQE Leader","SW Score","Chipset"};
+        String[] str = {"Project Name:", "Project ID:","Region:","SWQE Leader:","SW Score:","Chipset:"};
 
         ArrayAdapter adapter = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, str);
         lv2.setAdapter(adapter);
@@ -123,7 +123,7 @@ public class Tab2Fragment extends Fragment {
         if (getView() != null) {
             isViewShown = true;
             Log.d(TAG, "isViewShown = true: ");
-            String[] str2 = {Parser.projectdata, Parser.projectregion, Parser.projectleader, Parser.projectscore, Parser.projectchip};
+            String[] str2 = {Parser.projectdata, Parser.projectid2, Parser.projectregion, Parser.projectleader, Parser.projectscore, Parser.projectchip};
             ListView lv3 = getView().findViewById(R.id.lv3);
 
             try {

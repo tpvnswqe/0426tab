@@ -47,8 +47,8 @@ public class Tab3Fragment  extends Fragment  {
         web_1.getSettings().setUseWideViewPort(true);
         web_1.getSettings().setLoadWithOverviewMode(true);
 
-        web_1.loadUrl("http://192.168.1.23:8083/daily/inde.php?project_id="+Parser.aa);
-
+        web_1.loadUrl("http://swqereport.ddns.net:8050/daily/inde.php?project_id="+Parser.aa);
+        //web_1.loadUrl("http://192.168.1.15:8083/daily/inde.php?project_id="+Parser.aa);
 
 
         return v;

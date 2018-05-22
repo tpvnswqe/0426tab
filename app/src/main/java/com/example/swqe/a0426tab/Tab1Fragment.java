@@ -39,7 +39,8 @@ public class Tab1Fragment extends Fragment{
     private static final String TAG = "Tab1Fragment";
 
 
-    String url="http://192.168.1.23:8083/daily/players.php";
+    //String url="http://192.168.1.15:8083/daily/players.php";
+    String url="http://swqereport.ddns.net:8050/daily/players.php";
 
     @Nullable
     @Override

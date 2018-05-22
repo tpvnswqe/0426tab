@@ -39,6 +39,7 @@ public class Parser extends AsyncTask<Void,Integer,Integer> {
     String data;
     public static String aa ="";
     public static String projectdata = "";
+    public static String projectid2 = "";
     public static String projectregion = "";
     public static String projectleader = "";
     public static String projectscore = "";
@@ -125,6 +126,7 @@ public class Parser extends AsyncTask<Void,Integer,Integer> {
 
                         aa = name;
                         projectdata= jo.getString("project_name");
+                        projectid2 = jo.getString("project_id2");
                         projectregion= jo.getString("region");
                         projectleader= jo.getString("project_leader");
                         projectscore= jo.getString("sw_score");
@@ -132,11 +134,9 @@ public class Parser extends AsyncTask<Void,Integer,Integer> {
 
 
                         //(MainActivity.this).setViewPager(2);
-
-
                         //((MainActivity) getActivity()).setViewPager(2);
 
-                        Snackbar.make(view,name, Snackbar.LENGTH_LONG).show();
+                        //Snackbar.make(view,name, Snackbar.LENGTH_LONG).show();
 
 
 
@@ -169,6 +169,8 @@ public class Parser extends AsyncTask<Void,Integer,Integer> {
                 jo=ja.getJSONObject(i);
                 //RETRIOEVE NAME
                 String name=jo.getString("project_name");//This is the column name you want toi retrieve
+//                String id=jo.getString("project_id");
+//                name = id+ " " + name;
                 //ADD IT TO OUR ARRAYLIST
                 players.add(name);
             }

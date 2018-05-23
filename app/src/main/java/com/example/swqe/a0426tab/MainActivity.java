@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private SectionsPageAdapter mSectionsPageAdapter;
 
-    private ViewPager mViewPager;
+    public static ViewPager mViewPager;
     private Button btntest;
 
     private Parser anotherClass;
@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "setupViewPager");
         //viewPager.setOffscreenPageLimit(2);
         viewPager.setAdapter(adapter);
+
 
 
 

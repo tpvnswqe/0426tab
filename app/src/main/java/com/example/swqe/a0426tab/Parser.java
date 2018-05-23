@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import android.app.Application;
 
 import static android.content.Context.MODE_PRIVATE;
+import android.support.v4.view.ViewPager;
 
 
 /**
@@ -65,7 +66,7 @@ public class Parser extends AsyncTask<Void,Integer,Integer> {
         pd=new ProgressDialog(c);
         pd.setTitle("Parser");
         pd.setMessage("Parsing ....Please wait");
-        pd.show();
+        //pd.show();
     }
     @Override
     protected Integer doInBackground(Void... params) {
@@ -80,7 +81,7 @@ public class Parser extends AsyncTask<Void,Integer,Integer> {
         if(integer == 1)
         {
             //ADAPTER
-            ArrayAdapter<String> adapter=new ArrayAdapter<String>(c,android.R.layout.simple_list_item_single_choice,players);
+            final ArrayAdapter<String> adapter=new ArrayAdapter<String>(c,android.R.layout.simple_list_item_single_choice,players);
             //ADAPT TO LISTVIEW
 
             lv.setChoiceMode(CHOICE_MODE_SINGLE );
@@ -102,6 +103,7 @@ public class Parser extends AsyncTask<Void,Integer,Integer> {
 
 
                     Log.d(TAG, "onItemClick: "+lv.getCheckedItemPosition());
+
                     //======================
                     //點選某個item並呈現被選取的狀態
                     if ((select_item == -1) || (select_item==position)){
@@ -117,6 +119,7 @@ public class Parser extends AsyncTask<Void,Integer,Integer> {
                     //======================
 
                     try {
+                        MainActivity.mViewPager.setOffscreenPageLimit(1);
                         //ADD THAT DATA TO JSON ARRAY FIRST
                         JSONArray ja = new JSONArray(data);
                         //CREATE JO OBJ TO HOLD A SINGLE ITEM
@@ -131,6 +134,8 @@ public class Parser extends AsyncTask<Void,Integer,Integer> {
                         projectleader= jo.getString("project_leader");
                         projectscore= jo.getString("sw_score");
                         projectchip= jo.getString("chipset");
+
+                        MainActivity.mViewPager.setOffscreenPageLimit(2);
 
 
                         //(MainActivity.this).setViewPager(2);

@@ -36,7 +36,7 @@ public class    Downloader extends AsyncTask<Void,Integer,String> {
         pd=new ProgressDialog(c);
         pd.setTitle("Fetch Data");
         pd.setMessage("Fetching Data...Please wait");
-        pd.show();
+        //pd.show();
     }
     @Override
     protected String doInBackground(Void... params) {
